@@ -1,4 +1,4 @@
-# Luqman Ahmad — AI Engineer
+# Luqman khan — AI Engineer
 
 Personal portfolio site, hosted via GitHub Pages.
 
