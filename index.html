@@ -1,345 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Luqman Ahmad — AI Engineer</title>
+<title>Luqman Khan | AI Engineer</title>
+<meta name="description" content="Luqman Khan is an AI engineer in Pakistan building RAG chatbots, LLM agents and learning apps.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* ---------- Tokens ---------- */
   :root {
+    --bg: #F3F5F7;
+    --surface: #FFFFFF;
+    --ink: #16222C;
+    --muted: #4F5F6B;
+    --line: #D3DBE1;
+    --accent: #2B4FD8;
+    --accent-ink: #FFFFFF;
+    --mark: #FFE69A;
+    --mark-ink: #3A2F00;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
     box-sizing: border-box;
-    --bg: #12232E;
-    --surface: #182B37;
-    --surface-2: #1F3844;
-    --text: #E9E5D8;
-    --text-dim: #93A6AD;
-    --accent: #C9A227;
-    --accent-soft: #C9A22726;
-    --line: #E9E5D81F;
-    --line-strong: #E9E5D838;
-    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
-    --sans: 'IBM Plex Sans', -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
-    --mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #12232E; --surface: #182B37; --surface-2: #1F3844;
-      --text: #E9E5D8; --text-dim: #93A6AD; --accent: #C9A227;
-      --line: #E9E5D81F; --line-strong: #E9E5D838;
+      --bg: #0F171E; --surface: #16212A; --ink: #E8EEF2; --muted: #9DAEBB;
+      --line: #263541; --accent: #8FA8FF; --accent-ink: #0F171E;
+      --mark: #4B4012; --mark-ink: #FFE9A6;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #12232E; --surface: #182B37; --surface-2: #1F3844;
-    --text: #E9E5D8; --text-dim: #93A6AD; --accent: #C9A227;
-    --line: #E9E5D81F; --line-strong: #E9E5D838;
+    --bg: #0F171E; --surface: #16212A; --ink: #E8EEF2; --muted: #9DAEBB;
+    --line: #263541; --accent: #8FA8FF; --accent-ink: #0F171E;
+    --mark: #4B4012; --mark-ink: #FFE9A6;
   }
-  html { scroll-behavior: smooth; scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px)); }
-  * { box-sizing: border-box; }
+
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 1rem); scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.55;
+    color: var(--ink);
+    font: 400 1.0625rem/1.65 var(--body);
     -webkit-font-smoothing: antialiased;
   }
-  img { max-width: 100%; }
   a { color: inherit; }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-  /* ---- header ---- */
-  header.site {
-    position: sticky; top: 0; top: env(safe-area-inset-top, 0px);
-    z-index: 20;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* ---------- Header ---------- */
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 0; }
+  .brand { font: 700 1.125rem/1 var(--display); text-decoration: none; letter-spacing: -0.01em; }
+  nav.links { display: flex; align-items: center; gap: 1.25rem; font-size: 0.95rem; }
+  nav.links a { text-decoration: none; color: var(--muted); }
+  nav.links a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+  .theme {
+    font: inherit; font-size: 0.9rem; color: var(--ink); background: transparent;
+    border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 0.8rem; cursor: pointer;
   }
-  header.site .wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
+  .theme:hover { border-color: var(--ink); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 3rem 0 3.5rem; }
+  h1 {
+    font: 700 clamp(2.25rem, 6vw, 4rem)/1.05 var(--display);
+    letter-spacing: -0.03em; margin: 0 0 1.25rem; max-width: 17ch;
   }
-  .brand { font-family: var(--mono); font-size: 14px; letter-spacing: 0.01em; color: var(--text); text-decoration: none; }
-  .brand b { color: var(--accent); font-weight: 500; }
-  nav.links { display: flex; gap: 28px; font-family: var(--mono); font-size: 13px; }
-  nav.links a { text-decoration: none; color: var(--text-dim); border-bottom: 1px solid transparent; padding-bottom: 2px; transition: color .15s, border-color .15s; }
-  nav.links a:hover, nav.links a:focus-visible { color: var(--text); border-color: var(--accent); }
-  nav.links a:focus-visible { outline: none; }
+  .lede { max-width: 40rem; color: var(--muted); margin: 0 0 2.25rem; font-size: 1.125rem; }
 
-  /* ---- hero ---- */
-  .hero { padding: 96px 0 72px; border-bottom: 1px solid var(--line); }
-  .hero .kicker { font-family: var(--mono); font-size: 13px; color: var(--accent); margin: 0 0 18px; }
-  .hero h1 {
-    font-family: var(--serif); font-weight: 500; font-optical-sizing: auto;
-    font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 1.12; margin: 0 0 22px;
-    max-width: 15ch;
+  /* The memorable thing: an "ask my work" box that answers with citations, like the RAG apps I build */
+  .ask { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .ask-head { padding: 1rem 1.25rem 0.25rem; font-weight: 600; }
+  .ask-head span { display: block; color: var(--muted); font-weight: 400; font-size: 0.95rem; }
+  .qs { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.75rem 1.25rem 1rem; }
+  .q {
+    font: 500 0.95rem/1.2 var(--body); color: var(--ink); background: transparent;
+    border: 1px solid var(--line); border-radius: 999px; padding: 0.55rem 0.95rem; cursor: pointer;
   }
-  .hero p.lede { font-size: 1.05rem; color: var(--text-dim); max-width: 56ch; margin: 0 0 36px; }
-
-  /* query box — the recurring "retrieval" motif */
-  .query-box { border: 1px solid var(--line-strong); border-radius: 6px; background: var(--surface); overflow: hidden; max-width: 620px; }
-  .query-row { display: flex; align-items: stretch; }
-  .query-row input {
-    flex: 1; background: transparent; border: none; color: var(--text);
-    font-family: var(--mono); font-size: 14px; padding: 14px 16px; outline: none;
+  .q:hover { border-color: var(--ink); }
+  .q[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .answer { border-top: 1px solid var(--line); padding: 1.25rem; min-height: 11rem; }
+  .answer p { margin: 0 0 0.9rem; max-width: 42rem; }
+  .answer.fresh { animation: settle 280ms ease-out; }
+  @keyframes settle { from { opacity: 0.2; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  .cites { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--muted); }
+  a.cite, .cite-plain {
+    background: var(--mark); color: var(--mark-ink); text-decoration: none;
+    border-radius: 6px; padding: 0.15rem 0.55rem; font-weight: 500; font-size: 0.9rem;
   }
-  .query-row input::placeholder { color: var(--text-dim); }
-  .query-row button {
-    font-family: var(--mono); font-size: 13px; color: var(--bg); background: var(--accent);
-    border: none; padding: 0 20px; cursor: pointer; font-weight: 500;
-    transition: filter .15s;
+  a.cite:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+  h2 { font: 700 clamp(1.6rem, 3.5vw, 2.1rem)/1.15 var(--display); letter-spacing: -0.02em; margin: 0 0 2rem; }
+  h3 { font: 700 1.35rem/1.2 var(--display); letter-spacing: -0.01em; margin: 0 0 0.35rem; }
+  .status { color: var(--muted); font-size: 0.95rem; margin: 0 0 1rem; }
+
+  /* Featured project: two columns, a different shape from the rows below it */
+  .feature { display: grid; gap: 2rem; grid-template-columns: 1.1fr 1fr; padding-bottom: 3rem; }
+  .feature .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem 1.5rem; }
+  .panel h4 { margin: 0 0 0.6rem; font: 600 1rem/1.3 var(--body); }
+  .panel ul { margin: 0; padding-left: 1.15rem; }
+  .panel li { margin-bottom: 0.45rem; }
+
+  .row { display: grid; gap: 1rem 2rem; grid-template-columns: 1fr 1.4fr; padding: 2rem 0; border-top: 1px solid var(--line); }
+  .row p { margin: 0 0 0.8rem; }
+
+  .stack { color: var(--muted); font-size: 0.95rem; margin: 0 0 1rem; }
+  .btns { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    border-radius: 10px; padding: 0.6rem 1.05rem; border: 1px solid var(--ink);
   }
-  .query-row button:hover { filter: brightness(1.1); }
-  .query-row button:focus-visible, .query-row input:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-  .query-answer {
-    padding: 16px; border-top: 1px solid var(--line); font-size: 14.5px; color: var(--text);
-    display: none;
-  }
-  .query-answer.show { display: block; }
-  .query-answer .cite { font-family: var(--mono); color: var(--accent); text-decoration: none; cursor: pointer; }
-  .query-hint { font-family: var(--mono); font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .btn.off { border-style: dashed; border-color: var(--line); color: var(--muted); pointer-events: none; }
 
-  section { padding: 72px 0; border-bottom: 1px solid var(--line); }
-  section:last-of-type { border-bottom: none; }
-  .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 36px; }
-  .section-head .num { font-family: var(--mono); color: var(--accent); font-size: 14px; }
-  .section-head h2 { font-family: var(--serif); font-weight: 500; font-size: 1.7rem; margin: 0; }
+  /* ---------- About ---------- */
+  .about { display: grid; gap: 2rem; grid-template-columns: 1.3fr 1fr; }
+  .about p { margin: 0 0 1rem; max-width: 36rem; }
+  dl { margin: 0; }
+  dt { font-weight: 600; margin-top: 1rem; }
+  dt:first-child { margin-top: 0; }
+  dd { margin: 0.15rem 0 0; color: var(--muted); }
 
-  /* ---- about ---- */
-  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; }
-  .about-grid p { color: var(--text-dim); max-width: 56ch; }
-  .about-grid p + p { margin-top: 16px; }
-  dl.facts { margin: 0; font-family: var(--mono); font-size: 13.5px; }
-  dl.facts div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
-  dl.facts div:last-child { border-bottom: 1px solid var(--line); }
-  dl.facts dt { color: var(--text-dim); }
-  dl.facts dd { margin: 0; text-align: right; }
+  /* ---------- Contact ---------- */
+  .contact p { max-width: 36rem; margin: 0 0 1.25rem; }
+  footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); }
 
-  /* ---- work: citation-style project card ---- */
-  .doc-card { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 6px; padding: 28px 28px 24px; }
-  .doc-card + .doc-card { margin-top: 20px; }
-  .doc-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
-  .doc-head h3 { font-family: var(--serif); font-weight: 500; font-size: 1.35rem; margin: 0; }
-  .doc-status { font-family: var(--mono); font-size: 11.5px; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 3px; padding: 3px 8px; white-space: nowrap; }
-  .doc-meta { font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); margin: 0 0 18px; }
-  .doc-body p { color: var(--text); max-width: 62ch; margin: 0 0 16px; }
-  .flow { font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 18px; padding: 14px 16px; background: var(--surface-2); border-radius: 5px; border: 1px solid var(--line); }
-  .flow span.step { color: var(--text); }
-  .flow span.sep { color: var(--accent); }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-  .tags li { font-family: var(--mono); font-size: 12px; color: var(--text-dim); border: 1px solid var(--line-strong); border-radius: 4px; padding: 5px 10px; }
-  .doc-links { margin-top: 18px; display: flex; gap: 18px; font-family: var(--mono); font-size: 13px; }
-  .doc-links a { text-decoration: none; color: var(--accent); border-bottom: 1px solid transparent; }
-  .doc-links a:hover, .doc-links a:focus-visible { border-color: var(--accent); }
-
-  /* ---- skills ---- */
-  .skill-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .skill-cols h4 { font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); font-weight: 500; margin: 0 0 14px; }
-  .skill-cols ul { list-style: none; margin: 0; padding: 0; }
-  .skill-cols li { padding: 9px 0; border-top: 1px solid var(--line); font-size: 14.5px; }
-  .skill-cols li:last-child { border-bottom: 1px solid var(--line); }
-
-  /* ---- contact / footer ---- */
-  footer.contact .wrap { padding-top: 0; }
-  footer.contact h2 { font-family: var(--serif); font-weight: 500; font-size: 1.8rem; max-width: 18ch; margin: 0 0 28px; }
-  .contact-grid { display: flex; flex-wrap: wrap; gap: 14px 40px; font-family: var(--mono); font-size: 14px; margin-bottom: 48px; }
-  .contact-grid a { text-decoration: none; color: var(--text); border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; }
-  .contact-grid a:hover, .contact-grid a:focus-visible { color: var(--accent); border-color: var(--accent); }
-  .fineprint { font-family: var(--mono); font-size: 12px; color: var(--text-dim); padding-bottom: 40px; }
-
-  @media (max-width: 720px) {
-    .wrap { padding: 0 20px; }
-    nav.links { gap: 16px; }
-    .about-grid, .skill-cols { grid-template-columns: 1fr; }
-    .about-grid { gap: 28px; }
-    .skill-cols { gap: 24px; }
-    .hero { padding: 64px 0 48px; }
-    section { padding: 52px 0; }
+  @media (max-width: 760px) {
+    .feature, .row, .about { grid-template-columns: 1fr; }
+    nav.links a.hide-sm { display: none; }
+    .hero { padding-top: 1.5rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    * { transition: none !important; }
+    .answer.fresh { animation: none; }
   }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap">
-    <a class="brand" href="#top"><b>luqman</b>/ahmad</a>
-    <nav class="links">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#skills">Skills</a>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top">Luqman Khan</a>
+    <nav class="links" aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a class="hide-sm" href="#about">About</a>
       <a href="#contact">Contact</a>
+      <button class="theme" id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
     </nav>
-  </div>
-</header>
+  </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <p class="kicker">AI Engineer — Ninjascode, Islamabad</p>
-      <h1>I build systems that answer questions grounded in real documents.</h1>
-      <p class="lede">Luqman Ahmad. I work on retrieval-augmented generation, LLM application pipelines, and the plumbing that connects language models to a company's own data.</p>
+  <main id="top">
+    <div class="hero">
+      <h1>I build AI that answers from your documents and shows its sources.</h1>
+      <p class="lede">I'm Luqman Khan, an AI engineer at Ninjascode in Islamabad, Pakistan. Pick a question below. Each answer names the project it comes from, the same way my chatbots cite the pages they read.</p>
 
-      <div class="query-box">
-        <form class="query-row" id="queryForm">
-          <input id="queryInput" type="text" placeholder="Ask what Luqman has built" autocomplete="off">
-          <button type="submit">Search</button>
-        </form>
-        <div class="query-answer" id="queryAnswer"></div>
+      <div class="ask">
+        <div class="ask-head">Ask about my work<span>Choose a question</span></div>
+        <div class="qs" id="qs" role="group" aria-label="Questions"></div>
+        <div class="answer" id="answer" aria-live="polite"></div>
       </div>
-      <p class="query-hint">Try it — this box is wired to one real answer.</p>
     </div>
-  </section>
 
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head"><span class="num">01</span><h2>About</h2></div>
-      <div class="about-grid">
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <article id="rag" class="feature">
         <div>
-          <p>I'm an AI Engineer based in Lower Dir, Pakistan, currently working at Ninjascode in Islamabad. My focus is practical LLM engineering — turning a model and a pile of documents into something a person can actually query and trust.</p>
-          <p>Most of my work sits in the retrieval layer: chunking and embedding documents, choosing a vector store, and tuning the prompt and context window so the model's answers stay grounded in what was actually retrieved, with sources attached rather than invented.</p>
+          <h3>RAG chatbot and research agent</h3>
+          <p class="status">Working, in active development</p>
+          <p>Upload PDFs and ask questions in plain language. The app finds the relevant passages, answers from them, and lists the sources it used, so you can check every claim.</p>
+          <p class="stack">Python, LangChain, Streamlit, Gemini API</p>
+          <div class="btns" id="ragBtns"></div>
         </div>
-        <dl class="facts">
-          <div><dt>Role</dt><dd>AI Engineer</dd></div>
-          <div><dt>Company</dt><dd>Ninjascode</dd></div>
-          <div><dt>Based in</dt><dd>Lower Dir, Pakistan</dd></div>
-          <div><dt>Education</dt><dd>BSCS, University of Malakand</dd></div>
-          <div><dt>Grad. year</dt><dd>2026</dd></div>
+        <div class="panel">
+          <h4>What it does today</h4>
+          <ul>
+            <li>Indexes PDFs and retrieves the most relevant chunks for each question.</li>
+            <li>Answers with cited sources.</li>
+            <li>Runs as a ReAct agent that chooses between PDF search and web search, and remembers the conversation.</li>
+          </ul>
+          <h4 style="margin-top:1.1rem">What I'm adding next</h4>
+          <ul>
+            <li>A test set to measure and improve answer quality.</li>
+            <li>A live deployment with FastAPI and Docker.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="bscs" class="row">
+        <div>
+          <h3>BSCS Roadmap Hub</h3>
+          <p class="status">Live</p>
+        </div>
+        <div>
+          <p>A study site for computer science students that follows the BSCS degree course by course, with examples and practical work in each section.</p>
+          <p class="stack">HTML, CSS, JavaScript, GitHub Pages</p>
+          <div class="btns" id="bscsBtns"></div>
+        </div>
+      </article>
+
+      <article id="sasha" class="row">
+        <div>
+          <h3>Sasha EHS learning app</h3>
+          <p class="status">Prototype built, real version in planning</p>
+        </div>
+        <div>
+          <p>An app where learners work toward safety and hospitality certificates such as NEBOSH, IOSH and OSHA. The prototype covers courses and learner progress. The full version will add login, an admin area for uploading courses, and payment approval for local methods.</p>
+          <p class="stack">Prototype: single-page web app. Planned backend: Supabase</p>
+          <div class="btns" id="sashaBtns"></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="about">
+        <div>
+          <p>I'm an AI engineer based in Pakistan. I work on language-model apps that read documents, use tools, and explain where their answers came from.</p>
+          <p>I finished my Bachelor of Computer Science at the University of Malakand in 2026 and joined Ninjascode as an AI engineer in July 2026.</p>
+        </div>
+        <dl>
+          <dt>Work</dt>
+          <dd>AI Engineer, Ninjascode, Islamabad (since July 2026)</dd>
+          <dt>Education</dt>
+          <dd>BS Computer Science, University of Malakand (2022 to 2026)</dd>
+          <dt>Tools</dt>
+          <dd>Python, LangChain, Streamlit, Gemini, OpenAI and Claude APIs, GitHub</dd>
         </dl>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="work">
-    <div class="wrap">
-      <div class="section-head"><span class="num">02</span><h2>Work</h2></div>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>Want to talk about a project, a role, or a collaboration? Send a message and I'll reply.</p>
+      <div class="btns" id="contactBtns"></div>
+    </section>
+  </main>
 
-      <article class="doc-card" id="rag-chatbot">
-        <div class="doc-head">
-          <h3>Document Q&amp;A Chatbot (RAG)</h3>
-          <span class="doc-status">shipped</span>
-        </div>
-        <p class="doc-meta">LangChain · Gemini · Streamlit · FAISS</p>
-        <div class="doc-body">
-          <p>A retrieval-augmented chatbot that answers questions over a set of PDF documents instead of relying on the model's memory. A person uploads documents, asks a question in plain language, and gets an answer with the source passages it was drawn from — so the reasoning stays checkable.</p>
-
-          <div class="flow">
-            <span class="step">PDF upload</span><span class="sep">→</span>
-            <span class="step">chunking &amp; embeddings</span><span class="sep">→</span>
-            <span class="step">vector store</span><span class="sep">→</span>
-            <span class="step">retrieval</span><span class="sep">→</span>
-            <span class="step">Gemini generation</span><span class="sep">→</span>
-            <span class="step">cited answer</span>
-          </div>
-
-          <p>Built end to end: the LangChain pipeline handles ingestion, embedding, and retrieval; Gemini generates the final answer constrained to the retrieved chunks; Streamlit provides the interface a non-technical user interacts with. Put together as a fast, working portfolio piece rather than a long-running product.</p>
-
-          <ul class="tags">
-            <li>Retrieval-Augmented Generation</li>
-            <li>Vector search</li>
-            <li>Prompt engineering</li>
-            <li>Python</li>
-          </ul>
-        </div>
-        <div class="doc-links">
-          <a href="https://github.com/luqmankhan10/rag-chatbot" target="_blank" rel="noopener">View repository</a>
-          <a href="https://luqmankhan10--rag-chatbot-streamlit-app-eiubkl.streamlit.app" target="_blank" rel="noopener">Live demo</a>
-        </div>
-      </article>
-
-      <article class="doc-card">
-        <div class="doc-head">
-          <h3>Next project</h3>
-          <span class="doc-status" style="color:var(--text-dim); border-color:var(--line-strong); background:transparent;">in progress</span>
-        </div>
-        <p class="doc-meta">reserved</p>
-        <div class="doc-body">
-          <p>This slot is ready for the next build — an agent, a fine-tuning experiment, or a production RAG system with evaluation baked in.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="wrap">
-      <div class="section-head"><span class="num">03</span><h2>Skills</h2></div>
-      <div class="skill-cols">
-        <div>
-          <h4>LLM &amp; retrieval</h4>
-          <ul>
-            <li>Retrieval-Augmented Generation</li>
-            <li>LangChain</li>
-            <li>Prompt engineering</li>
-            <li>Vector stores &amp; embeddings</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Models &amp; APIs</h4>
-          <ul>
-            <li>Gemini API</li>
-            <li>OpenAI API</li>
-            <li>Claude API</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Engineering</h4>
-          <ul>
-            <li>Python</li>
-            <li>Streamlit</li>
-            <li>Application pipelines</li>
-            <li>API integration</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="contact" id="contact">
-    <div class="wrap">
-      <div class="section-head"><span class="num">04</span><h2>Get in touch</h2></div>
-      <h2>Open to AI engineering roles and LLM application work.</h2>
-      <div class="contact-grid">
-        <a href="mailto:your.email@example.com">your.email@example.com</a>
-        <a href="https://github.com/luqmankhan10" target="_blank" rel="noopener">GitHub</a>
-        <a href="#">LinkedIn</a>
-      </div>
-      <p class="fineprint">Luqman Ahmad — Islamabad, Pakistan</p>
-    </div>
+  <footer>
+    <div>Luqman Khan. Built by hand and hosted on GitHub Pages.</div>
   </footer>
-</main>
+</div>
 
 <script>
-  (function () {
-    var form = document.getElementById('queryForm');
-    var input = document.getElementById('queryInput');
-    var answer = document.getElementById('queryAnswer');
+  /* ================================================================
+     EDIT THIS BLOCK. Leave a link as "" and its button shows as
+     "coming soon" (projects) or is hidden (contact).
+     ================================================================ */
+  const CONFIG = {
+    github:   "https://github.com/luqmankhan10",
+    linkedin: "",                       // e.g. "https://www.linkedin.com/in/your-name"
+    email:    "",                       // e.g. "you@example.com"
+    cv:       "",                       // e.g. "cv.pdf" (put the file next to index.html)
+    projects: {
+      rag:   { live: "", repo: "https://github.com/luqmankhan10/rag-chatbot", video: "" },
+      bscs:  { live: "https://luqmankhan10.github.io/bscs-roadmap-hub", repo: "https://github.com/luqmankhan10/bscs-roadmap-hub", video: "" },
+      sasha: { live: "", repo: "", video: "" }
+    }
+  };
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      answer.innerHTML = 'His clearest example is a document Q&amp;A chatbot built with LangChain and Gemini — it retrieves the relevant passages from uploaded PDFs and answers with citations. <a class="cite" data-target="rag-chatbot">[see source]</a>';
-      answer.classList.add('show');
-    });
+  /* ---------- Ask box ---------- */
+  const SOURCES = {
+    rag:   { label: "RAG chatbot",        href: "#rag" },
+    bscs:  { label: "BSCS Roadmap Hub",   href: "#bscs" },
+    sasha: { label: "Sasha EHS app",      href: "#sasha" },
+    about: { label: "About",              href: "#about" },
+    contact: { label: "Contact",          href: "#contact" }
+  };
 
-    answer.addEventListener('click', function (e) {
-      var t = e.target.closest('.cite');
-      if (!t) return;
-      var el = document.getElementById(t.getAttribute('data-target'));
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.style.borderColor = 'var(--accent)';
-        setTimeout(function () { el.style.borderColor = ''; }, 1600);
-      }
+  const QA = [
+    { q: "What have you built?",
+      a: ["I've built a RAG chatbot that answers questions from PDFs and cites its sources, a study site covering the BSCS degree for computer science students, and a prototype learning app for safety certificates.",
+          "The chatbot is the project I'm investing the most in right now."],
+      s: ["rag", "bscs", "sasha"] },
+    { q: "What does the RAG chatbot do?",
+      a: ["You upload PDFs and ask questions. It retrieves the passages that matter, answers from them, and shows which sources it used.",
+          "I've also turned it into an agent that can search the PDFs or the web and keeps track of the conversation."],
+      s: ["rag"] },
+    { q: "Can I try something live?",
+      a: ["Yes. The BSCS Roadmap Hub is live now. I'm deploying the chatbot next, and its demo link will appear on its card as soon as it's up."],
+      s: ["bscs", "rag"] },
+    { q: "Which tools do you use?",
+      a: ["Python and LangChain for the AI side, Streamlit for quick interfaces, and the Gemini, OpenAI and Claude APIs for the models. I use GitHub for everything and plan to use Supabase for the learning app's backend."],
+      s: ["about", "sasha"] },
+    { q: "Where do you work and study?",
+      a: ["I work as an AI engineer at Ninjascode in Islamabad, and I completed my Bachelor of Computer Science at the University of Malakand in 2026."],
+      s: ["about"] },
+    { q: "How can I reach you?",
+      a: ["Use the contact section at the bottom of this page. You can also find all my code on GitHub."],
+      s: ["contact"] }
+  ];
+
+  const qs = document.getElementById("qs");
+  const answer = document.getElementById("answer");
+
+  function show(i) {
+    const item = QA[i];
+    [...qs.children].forEach((b, n) => b.setAttribute("aria-pressed", String(n === i)));
+    answer.innerHTML = "";
+    item.a.forEach(t => { const p = document.createElement("p"); p.textContent = t; answer.appendChild(p); });
+    const c = document.createElement("div");
+    c.className = "cites";
+    c.appendChild(document.createTextNode("Sources:"));
+    item.s.forEach(k => {
+      const a = document.createElement("a");
+      a.className = "cite"; a.href = SOURCES[k].href; a.textContent = SOURCES[k].label;
+      c.appendChild(a);
     });
-  })();
+    answer.appendChild(c);
+    answer.classList.remove("fresh"); void answer.offsetWidth; answer.classList.add("fresh");
+  }
+
+  QA.forEach((item, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "q"; b.textContent = item.q;
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", () => show(i));
+    qs.appendChild(b);
+  });
+  show(0);
+
+  /* ---------- Project buttons ---------- */
+  function btn(parent, text, href, primary) {
+    const a = document.createElement("a");
+    a.className = "btn" + (primary ? " primary" : "") + (href ? "" : " off");
+    a.textContent = href ? text : text + " (coming soon)";
+    if (href) { a.href = href; if (/^https?:/.test(href)) { a.target = "_blank"; a.rel = "noopener"; } }
+    else { a.setAttribute("aria-disabled", "true"); }
+    parent.appendChild(a);
+  }
+  [["rag", "ragBtns"], ["bscs", "bscsBtns"], ["sasha", "sashaBtns"]].forEach(([key, id]) => {
+    const p = CONFIG.projects[key], el = document.getElementById(id);
+    btn(el, "Live demo", p.live, true);
+    btn(el, "Source code", p.repo, false);
+    if (p.video) btn(el, "Watch demo video", p.video, false);
+  });
+
+  /* ---------- Contact buttons (only shown when filled in) ---------- */
+  const contact = document.getElementById("contactBtns");
+  const add = (text, href, primary) => { if (!href) return; btn(contact, text, href, primary); };
+  add("Email me", CONFIG.email ? "mailto:" + CONFIG.email : "", true);
+  add("LinkedIn", CONFIG.linkedin, !CONFIG.email);
+  add("GitHub", CONFIG.github, false);
+  add("Download CV", CONFIG.cv, false);
+
+  /* ---------- Theme toggle ---------- */
+  const root = document.documentElement;
+  try { const saved = localStorage.getItem("theme"); if (saved) root.setAttribute("data-theme", saved); } catch (e) {}
+  document.getElementById("themeBtn").addEventListener("click", () => {
+    const dark = root.getAttribute("data-theme") === "dark" ||
+      (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    const next = dark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
 </script>
-
 </body>
 </html>
